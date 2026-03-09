@@ -243,8 +243,8 @@
     @media (max-width: 480px) {
       #hero {
         background-image:
-          url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E"),
-          linear-gradient(to bottom, rgba(74,138,181,0.3) 0%, rgba(74,138,181,0.85) calc(var(--gy) - 4%), rgba(74,138,181,0.85) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
+          url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.065)' stroke-width='1'/%3E%3C/svg%3E"),
+          linear-gradient(to bottom, rgba(70,138,181,0.3) 0%, rgba(70,138,181,0.9) calc(var(--gy) - 4%), rgba(70,138,181,0.9) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
       }
     }
 
@@ -302,8 +302,8 @@
       --gy: 40%;
       background-color: #060d18;
       background-image:
-        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E"),
-        linear-gradient(to bottom, rgba(74,138,181,0.3) 0%, rgba(74,138,181,0.85) calc(var(--gy) - 4%), rgba(74,138,181,0.85) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.065)' stroke-width='1'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, rgba(70,138,181,0.3) 0%, rgba(70,138,181,0.9) calc(var(--gy) - 4%), rgba(70,138,181,0.9) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
     }
 
     .hero-inner {
@@ -318,6 +318,7 @@
     .hero-logo {
       width: min(420px, 80vw);
       height: auto;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.65)) drop-shadow(0 0 22px rgba(45,122,170,0.9)) drop-shadow(0 0 55px rgba(45,122,170,0.6));
     }
 
     .hero-divider {
