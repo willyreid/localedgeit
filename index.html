@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Edge IT - Managed IT Services · Adelaide, SA</title>
+  <meta name="description" content="Security-first managed IT services for South Australian small to medium businesses. Microsoft specialists. Transparent pricing. No surprise invoices." />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES
+    ============================================= */
+    :root {
+      --blue:       #3682AE;
+      --blue-light: #439DD1;
+      --blue-dark:  #113347;
+      --dark:       #060d18;
+      --navy:       #0a1e2e;
+      --text:       #475569;
+      --text-light: #94a3b8;
+      --surface:    #f8fafc;
+      --white:      #ffffff;
+      --border:     #e2e8f0;
+      --green:      #22c55e;
+
+      --font-body:  'Inter', sans-serif;
+      --font-head:  'Montserrat', sans-serif;
+      --font-mono:  'JetBrains Mono', monospace;
+
+      --radius:     0.75rem;
+      --radius-sm:  0.5rem;
+      --shadow:     0 4px 24px rgba(0,0,0,0.12);
+      --shadow-lg:  0 8px 40px rgba(0,0,0,0.2);
+      --transition: 0.25s ease;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* =============================================
+       TYPOGRAPHY HELPERS
+    ============================================= */
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      line-height: 1.15;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-light);
+      border-color: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(54, 130, 174, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-blue {
+      background: transparent;
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .btn-outline-blue:hover {
+      background: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 68px;
+      background: rgba(6, 13, 24, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background var(--transition);
+    }
+
+    #nav.scrolled {
+      background: rgba(6, 13, 24, 0.97);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    #nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    #nav ul li a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    #nav ul li a:hover {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    #nav ul li a.cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 0.5rem 1.1rem;
+      margin-left: 0.5rem;
+    }
+
+    #nav ul li a.cta:hover {
+      background: var(--blue-light);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    @media (max-width: 480px) {
+      #hero {
+        background-image:
+          url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E"),
+          linear-gradient(to bottom, rgba(74,138,181,0.3) 0%, rgba(74,138,181,0.85) calc(var(--gy) - 4%), rgba(74,138,181,0.85) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      #nav ul {
+        display: none;
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(6, 13, 24, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        gap: 0.25rem;
+      }
+
+      #nav ul.open {
+        display: flex;
+      }
+
+      #nav ul li a {
+        display: block;
+        padding: 0.75rem 1rem;
+      }
+
+      #nav ul li a.cta {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 0.5rem;
+      }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+      --gx: 50%;
+      --gy: 40%;
+      background-color: #060d18;
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E"),
+        linear-gradient(to bottom, rgba(74,138,181,0.3) 0%, rgba(74,138,181,0.85) calc(var(--gy) - 4%), rgba(74,138,181,0.85) calc(var(--gy) + 4%), rgba(6,13,24,0) 100%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .hero-logo {
+      width: min(420px, 80vw);
+      height: auto;
+    }
+
+    .hero-divider {
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(67, 157, 209, 0.5), transparent);
+      margin: 0.25rem 0;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      background: rgba(54, 130, 174, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: clamp(2rem, 5.5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 0 60px rgba(67, 157, 209, 0.25), 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--blue-light);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 620px;
+      line-height: 1.75;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-scroll-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      transform: rotate(45deg);
+      animation: scrollBounce 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(4px); }
+    }
+
+    /* =============================================
+       STATS STRIP
+    ============================================= */
+    #stats {
+      background: var(--blue-dark);
+      padding: 3rem 2rem;
+    }
+
+    .stats-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+
+    .stat-value {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--blue-light);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat-item {
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+    }
+
+    /* =============================================
+       ABOUT / WHY LOCAL EDGE IT
+    ============================================= */
+    #about {
+      background: var(--navy);
+      padding: 5rem 2rem;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .about-header .section-title {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillar-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--transition);
+    }
+
+    .pillar-card:hover {
+      background: rgba(54, 130, 174, 0.06);
+      border-color: rgba(67, 157, 209, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(54, 130, 174, 0.15);
+      border: 1px solid rgba(67, 157, 209, 0.2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .pillar-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--blue-light);
+    }
+
+    .pillar-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-desc {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .tech-stack {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 2.5rem;
+    }
+
+    .tech-stack-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .tech-badge {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      background: rgba(54, 130, 174, 0.08);
+      border: 1px solid rgba(67, 157, 209, 0.25);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 900px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =============================================
+       SERVICES
+    ============================================= */
+    #services {
+      background: var(--surface);
+      padding: 5rem 2rem;
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-header .section-title {
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    .services-header .section-sub {
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .service-card-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(54, 130, 174, 0.1);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card-icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--blue);
+    }
+
+    .service-card-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blue-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .service-card-desc {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* =============================================
+       PRICING
+    ============================================= */
+    #pricing {
+      background: var(--surface);
+      padding: 5rem 2rem;
+    }
+
+    .pricing-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .pricing-header .section-title {
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .pricing-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2.25rem 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--blue), var(--blue-light));
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .pricing-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blue-dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-price {
+      margin-bottom: 1.75rem;
+    }
+
+    .price-amount {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--blue-dark);
+      line-height: 1;
+    }
+
+    .price-unit {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+      font-family: var(--font-mono);
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2322c55e'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing-note {
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.7;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    @media (max-width: 900px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* =============================================
+       ONBOARDING
+    ============================================= */
+    #onboarding {
+      background: var(--navy);
+      padding: 5rem 2rem;
+    }
+
+    .onboarding-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .onboarding-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .onboarding-header .section-title {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .steps-row::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 28px);
+      right: calc(12.5% + 28px);
+      height: 1px;
+      border-top: 2px dashed rgba(54, 130, 174, 0.35);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 0.75rem;
+      align-self: stretch;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: var(--white);
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 4px rgba(54, 130, 174, 0.2);
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .step-week {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--blue-light);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .step-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .steps-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .steps-row::before {
+        display: none;
+      }
+
+      .step {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1.25rem;
+      }
+
+      .step-number {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    /* =============================================
+       FAQ
+    ============================================= */
+    #faq {
+      background: var(--surface);
+      padding: 5rem 2rem;
+      border-top: 3px solid transparent;
+      border-image: linear-gradient(90deg, transparent, var(--blue), transparent) 1;
+    }
+
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .faq-header .section-title {
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    details.faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: box-shadow var(--transition);
+    }
+
+    details.faq-item:hover {
+      box-shadow: var(--shadow);
+    }
+
+    details.faq-item[open] {
+      border-left: 3px solid var(--blue);
+      box-shadow: var(--shadow);
+    }
+
+    summary.faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--blue-dark);
+      list-style: none;
+      user-select: none;
+    }
+
+    summary.faq-q::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-chevron {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--blue);
+      transition: transform var(--transition);
+    }
+
+    details.faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.75;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    /* =============================================
+       TESTIMONIAL / CONTACT
+    ============================================= */
+    #contact {
+      background: linear-gradient(160deg, #0f2a3d 0%, #1a3f57 50%, #113347 100%);
+      padding: 5rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-block {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+.testimonial-quote {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 1.25rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--blue-light);
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-left .section-title {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-left .section-sub {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-item a {
+      color: var(--blue-light);
+      transition: color var(--transition);
+    }
+
+    .contact-item a:hover {
+      color: var(--white);
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(54, 130, 174, 0.15);
+      border: 1px solid rgba(67, 157, 209, 0.2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 16px;
+      height: 16px;
+      color: var(--blue-light);
+    }
+
+    .contact-form-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .contact-form-wrap h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.02em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      padding: 0.7rem 0.9rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color var(--transition), background var(--transition);
+      width: 100%;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.25);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue);
+      background: rgba(54, 130, 174, 0.08);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .form-submit:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(54, 130, 174, 0.4);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      text-align: center;
+      color: #4ade80;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+    }
+
+    .form-error {
+      display: none;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      text-align: center;
+      color: #f87171;
+      font-size: 0.92rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    #footer {
+      background: #030810;
+      padding: 1.75rem 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+      height: 32px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.75;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      font-family: var(--font-mono);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--blue-light);
+    }
+
+    @media (max-width: 640px) {
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    }
+
+    /* =============================================
+       MISC UTILITIES
+    ============================================= */
+    .text-center {
+      text-align: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Smooth fade-in for sections */
+    section {
+      scroll-margin-top: 68px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+  ============================================= -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Local Edge IT - Home">
+      <img src="logo.png" alt="Local Edge IT" />
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" onclick="document.querySelector('nav ul').classList.toggle('open')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="cta">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="logo.png" alt="Local Edge IT" class="hero-logo" />
+      <div class="hero-divider" aria-hidden="true"></div>
+      <span class="hero-badge">Managed IT &amp; Cybersecurity · Adelaide / Australia</span>
+      <h1 class="hero-title">
+        Enterprise-grade IT.<br />Without the <em>enterprise overhead.</em>
+      </h1>
+      <p class="hero-sub">
+        Security-first managed IT for South Australian small and medium businesses - Microsoft specialists who believe enterprise-grade protection shouldn't come with an enterprise price tag.
+      </p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-primary">View Services</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>scroll</span>
+      <div class="hero-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       STATS STRIP
+  ============================================= -->
+  <section id="stats" aria-label="Key statistics">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-value">10+</div>
+        <div class="stat-label">Years IT Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">M365</div>
+        <div class="stat-label">Microsoft 365 Specialists</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">$70</div>
+        <div class="stat-label">Managed Services from /user/mo</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">SA</div>
+        <div class="stat-label">Adelaide-Based, AU-Wide</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ABOUT / WHY LOCAL EDGE IT
+  ============================================= -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-header">
+        <span class="eyebrow">Why Choose Us</span>
+        <h2 class="section-title" style="color:var(--white);">IT support that actually works</h2>
+      </div>
+
+      <div class="pillars-grid">
+        <!-- Security-First -->
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Security-First</h3>
+          <p class="pillar-desc">We take a security-first approach to everything - giving you honest, risk-based recommendations rather than upselling products you don't need.</p>
+        </div>
+
+        <!-- Transparent Pricing -->
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Transparent Pricing</h3>
+          <p class="pillar-desc">Fixed per-user, per-device pricing with no surprise invoices. You always know exactly what you're paying and what you're getting.</p>
+        </div>
+
+        <!-- Direct Access -->
+        <div class="pillar-card">
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="pillar-title">Direct Access</h3>
+          <p class="pillar-desc">No ticketing black holes. You get direct access to experienced technicians who know your environment and your business.</p>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="tech-stack">
+        <div class="tech-stack-label">Common Solutions:</div>
+        <div class="tech-badges">
+          <span class="tech-badge">Microsoft 365</span>
+          <span class="tech-badge">Azure</span>
+          <span class="tech-badge">Microsoft Intune</span>
+          <span class="tech-badge">Microsoft Defender</span>
+          <span class="tech-badge">Proofpoint</span>
+          <span class="tech-badge">CrowdStrike</span>
+          <span class="tech-badge">1Password</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SERVICES
+  ============================================= -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <span class="eyebrow">What's Included</span>
+        <h2 class="section-title">Managed Services</h2>
+        <p class="section-sub">Your monthly investment covers everything below - no ticket limits, no hidden extras.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Helpdesk Support -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Helpdesk Support</h3>
+          <p class="service-card-desc">Unlimited remote troubleshooting, Microsoft 365 support, user account management, and password resets. No ticket limits during business hours (Mon-Fri, 8am-6pm ACST).</p>
+        </div>
+
+        <!-- Device Management -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Device Management</h3>
+          <p class="service-card-desc">Automated security patching, policy enforcement, health monitoring, compliance reporting, and remote wipe capability - all managed via Microsoft Intune.</p>
+        </div>
+
+        <!-- Microsoft 365 Administration -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Microsoft 365 Administration</h3>
+          <p class="service-card-desc">License management, email security monitoring, SharePoint/OneDrive admin, Teams support, security policy configuration, and optimisation recommendations.</p>
+        </div>
+
+        <!-- Proactive Security Monitoring -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Proactive Security Monitoring</h3>
+          <p class="service-card-desc">Weekly security posture reviews, alert triage and response, threat detection, compliance monitoring, and vulnerability remediation.</p>
+        </div>
+
+        <!-- Vendor & License Management -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.07 4.93a10 10 0 0 0-14.14 0"/>
+              <path d="M4.93 19.07a10 10 0 0 0 14.14 0"/>
+              <line x1="12" y1="2" x2="12" y2="6"/>
+              <line x1="12" y1="18" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="6" y2="12"/>
+              <line x1="18" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Vendor &amp; License Management</h3>
+          <p class="service-card-desc">Microsoft licensing procurement and billing, ISP coordination, warranty management, and renewal tracking. One point of contact for all your IT vendors.</p>
+        </div>
+
+        <!-- Strategic Planning -->
+        <div class="service-card">
+          <div class="service-card-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+            </svg>
+          </div>
+          <h3 class="service-card-title">Strategic Planning</h3>
+          <p class="service-card-desc">Quarterly service reviews, annual security assessments with recommendations, and technology roadmap planning to keep your business ahead.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ONBOARDING
+  ============================================= -->
+  <section id="onboarding">
+    <div class="onboarding-inner">
+      <div class="onboarding-header">
+        <span class="eyebrow">Getting Started</span>
+        <h2 class="section-title" style="color:var(--white);">Up and running in 2-4 weeks</h2>
+      </div>
+
+      <div class="steps-row">
+
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-week">Week 1</div>
+            <div class="step-title">Discovery</div>
+            <p class="step-desc">No-cost consultation to understand your environment, pain points, security concerns, and budget. No obligation.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-week">Weeks 1-2</div>
+            <div class="step-title">Agreement</div>
+            <p class="step-desc">Review and sign the Managed IT Services Agreement. Agree on scope, technology stack, and pricing.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-week">Weeks 2-4</div>
+            <div class="step-title">Technical Setup</div>
+            <p class="step-desc">Deploy management tools, establish security baselines, configure monitoring, and document your environment.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-week">Ongoing</div>
+            <div class="step-title">Steady State</div>
+            <p class="step-desc">Daily helpdesk, proactive monitoring, weekly security reviews, monthly reporting, and quarterly strategy sessions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PRICING
+  ============================================= -->
+  <section id="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-header">
+        <span class="eyebrow">Transparent Pricing</span>
+        <h2 class="section-title">Simple, Predictable Costs</h2>
+        <p class="section-sub" style="margin:0 auto;">All prices ex GST. Monthly managed services billed in arrears. Projects billed on completion.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Managed Services -->
+        <div class="pricing-card">
+          <div class="pricing-title">Managed Services</div>
+          <div class="pricing-price">
+            <div class="price-amount">$70</div>
+            <div class="price-unit">/ user / month</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Unlimited helpdesk support</li>
+            <li>Microsoft 365 administration</li>
+            <li>Proactive security monitoring</li>
+            <li>Vendor &amp; license management</li>
+            <li>2hrs on-site support/month</li>
+            <li>Quarterly &amp; annual reviews</li>
+          </ul>
+        </div>
+
+        <!-- Device Management -->
+        <div class="pricing-card">
+          <div class="pricing-title">Device Management</div>
+          <div class="pricing-price">
+            <div class="price-amount">$40</div>
+            <div class="price-unit">/ device / month</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Microsoft Intune management</li>
+            <li>Automated security patching</li>
+            <li>Policy enforcement</li>
+            <li>Health monitoring</li>
+            <li>Compliance reporting</li>
+            <li>Remote wipe capability</li>
+          </ul>
+        </div>
+
+        <!-- Project Work -->
+        <div class="pricing-card">
+          <div class="pricing-title">Project Work</div>
+          <div class="pricing-price">
+            <div class="price-amount">$85</div>
+            <div class="price-unit">/ hour (FY26)</div>
+          </div>
+          <ul class="pricing-features">
+            <li>Hardware setup &amp; configuration</li>
+            <li>Network infrastructure</li>
+            <li>Application migrations</li>
+            <li>Security policy documentation</li>
+            <li>After-hours: $127.50/hr</li>
+            <li>Public holidays: $170/hr</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="pricing-note">
+        Volume discounts available for 15+ users. Microsoft 365 licensing available from $10/user/month. Contact us for a tailored quote. Pricing is indicative and may vary based on your business's specific requirements and circumstances.
+      </p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FAQ
+  ============================================= -->
+  <section id="faq">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <span class="eyebrow">FAQs</span>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            Do you require long-term contracts?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">12 months initial term, then month-to-month. You can exit with 30 days notice after the initial term.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            What if I'm not sure what I need?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">We'll figure that out together in a no-cost initial consultation. We'll assess your environment and recommend appropriate services - no obligation.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            Do you work outside Adelaide?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Remote support is available Australia-wide. On-site support is primarily Adelaide metro, but we can arrange regional visits for larger projects.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            What about after-hours support?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Available at 1.5× the standard rate ($127.50/hr in FY26). For businesses with regular after-hours needs, we can discuss a retainer arrangement.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            Can unused on-site hours roll over?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">No, but if you consistently don't use them we're happy to discuss alternatives that better suit your needs.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            What if Microsoft raises prices?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">Licensing costs are passed through as they occur. We proactively help optimise your license mix to manage overall costs.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            Can I buy Microsoft licenses from you without managed services?
+            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-answer">No. Our model requires management access to provide effective security and support - we can't guarantee the security of an environment we don't fully manage.</div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONTACT
+  ============================================= -->
+  <section id="contact">
+    <div class="contact-inner">
+
+      <!-- Testimonial -->
+      <div class="testimonial-block">
+        <blockquote>
+          <p class="testimonial-quote">"Local Edge IT has provided exceptional service for our business. They have become an extension of our team and the backbone of our IT services. Their proactive approach to security and support means we can focus on what we do best - knowing our IT is in safe hands."</p>
+          <footer class="testimonial-author">- Jordan Kies, Pirie Property Group</footer>
+        </blockquote>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left: text + contact details -->
+        <div class="contact-left">
+          <span class="eyebrow">Let's Talk</span>
+          <h2 class="section-title" style="color:var(--white); margin-bottom:1rem;">Ready to take the next step?</h2>
+          <p class="section-sub" style="color:rgba(255,255,255,0.65); margin-bottom:2.5rem;">
+            Start with a no-cost consultation. Tell us about your business and we'll put together a recommendation with no pressure and no obligation.
+          </p>
+
+          <div class="contact-details">
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <span>Adelaide, SA - on-site &amp; remote Australia-wide</span>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <a href="mailto:support@localedgeit.com.au">support@localedgeit.com.au</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="contact-form-wrap">
+          <h3>Send us a message</h3>
+          <form id="lei-contact-form" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Name <span style="color:#ef4444;">*</span></label>
+                <input type="text" id="f-name" name="name" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email <span style="color:#ef4444;">*</span></label>
+                <input type="email" id="f-email" name="email" placeholder="jane@company.com.au" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-phone">Phone</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="04 xxxx xxxx" />
+              </div>
+              <div class="form-group">
+                <label for="f-company">Company Name</label>
+                <input type="text" id="f-company" name="company" placeholder="Acme Pty Ltd" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="f-message">Message</label>
+              <textarea id="f-message" name="message" placeholder="Tell us a bit about your business and what you're looking for..."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Send Message &rarr;</button>
+
+            <div class="form-success" id="form-success">
+              <strong>Message sent!</strong> We'll be in touch within one business day.
+            </div>
+            <div class="form-error" id="form-error"></div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo" aria-label="Local Edge IT - Home">
+        <img src="logo.png" alt="Local Edge IT" />
+      </a>
+      <span class="footer-copy">© 2026 Local Edge IT &nbsp;·&nbsp; ABN 77 669 673 028</span>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="mailto:support@localedgeit.com.au">support@localedgeit.com.au</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // ----- Align hero gradient origin to logo centre -----
+    (function () {
+      var hero = document.getElementById('hero');
+      var logo = document.querySelector('.hero-logo');
+      if (!hero || !logo) return;
+
+      function align() {
+        var hRect = hero.getBoundingClientRect();
+        var lRect = logo.getBoundingClientRect();
+        var x = ((lRect.left + lRect.width  / 2) - hRect.left) / hRect.width  * 100;
+        var y = ((lRect.top  + lRect.height / 2) - hRect.top)  / hRect.height * 100;
+        hero.style.setProperty('--gx', x.toFixed(1) + '%');
+        hero.style.setProperty('--gy', y.toFixed(1) + '%');
+      }
+
+      window.addEventListener('load',   align);
+      window.addEventListener('resize', align);
+    })();
+
+    // ----- Nav scroll effect -----
+    (function () {
+      var nav = document.getElementById('nav');
+      function onScroll() {
+        if (window.scrollY > 40) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // ----- Close mobile nav on link click -----
+    (function () {
+      var links = document.querySelectorAll('#nav ul a');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          document.querySelector('nav ul').classList.remove('open');
+        });
+      });
+    })();
+
+    // ----- Contact form (Formspree) -----
+    (function () {
+      var form = document.getElementById('lei-contact-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var btn = form.querySelector('.form-submit');
+        var successEl = document.getElementById('form-success');
+        var errorEl = document.getElementById('form-error');
+
+        function showError(msg) {
+          errorEl.textContent = msg;
+          errorEl.style.display = 'block';
+          btn.disabled = false;
+          btn.textContent = 'Send Message →';
+        }
+
+        // Basic validation
+        var name = form.querySelector('[name="name"]').value.trim();
+        var email = form.querySelector('[name="email"]').value.trim();
+        if (!name || !email) {
+          showError('Please fill in your name and email address.');
+          return;
+        }
+
+        errorEl.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        var data = new FormData(form);
+
+        fetch('https://formspree.io/f/mvzwzgor', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (res) {
+            if (res.ok) {
+              form.reset();
+              successEl.style.display = 'block';
+              btn.textContent = 'Message Sent ✓';
+            } else {
+              res.json().then(function (data) {
+                var msg = (data && data.errors)
+                  ? data.errors.map(function (err) { return err.message; }).join(', ')
+                  : 'Something went wrong. Please try again or email us directly.';
+                showError(msg);
+              });
+            }
+          })
+          .catch(function () {
+            showError('Network error. Please try again or email us at support@localedgeit.com.au');
+          });
+      });
+    })();
+  </script>
+
+</body>
+</html>
