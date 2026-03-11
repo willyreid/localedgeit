@@ -79,7 +79,7 @@
     .eyebrow {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -108,7 +108,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
+      padding: 0.85rem 2rem;
       border-radius: var(--radius-sm);
       font-family: var(--font-body);
       font-weight: 600;
@@ -135,11 +135,11 @@
     .btn-outline {
       background: transparent;
       color: var(--white);
-      border-color: rgba(255, 255, 255, 0.4);
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
     }
 
     .btn-outline:hover {
-      border-color: var(--white);
+      border-color: rgba(255, 255, 255, 0.7);
       background: rgba(255, 255, 255, 0.08);
       transform: translateY(-2px);
     }
@@ -249,10 +249,6 @@
       transition: all var(--transition);
     }
 
-    @media (max-width: 480px) {
-      #hero { padding: 6rem 1.5rem 5rem; }
-    }
-
     @media (max-width: 768px) {
       .nav-toggle {
         display: flex;
@@ -305,7 +301,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      padding: 8rem 0 7rem;
+      padding: 8rem 0 8rem;
       position: relative;
       overflow: hidden;
       background: url('hero.png') center center / cover no-repeat;
@@ -316,11 +312,12 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(to right,
-        rgba(6,13,24,0.75) 0%,
-        rgba(6,13,24,0.45) 45%,
+        rgba(6,13,24,0.6) 0%,
+        rgba(6,13,24,0.4) 45%,
         rgba(6,13,24,0.1) 100%);
       z-index: 0;
     }
+
 
     @keyframes fadeInLeft {
       from { opacity: 0; transform: translateX(-48px); }
@@ -331,28 +328,28 @@
       position: relative;
       z-index: 1;
       max-width: 680px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.25rem;
       opacity: 0;
       animation: fadeInLeft 0.9s ease 0.25s forwards;
+      will-change: transform, opacity;
     }
+
+    .hero-badge svg { flex-shrink: 0; }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1rem 0.3rem;
       background: rgba(54,130,174,0.45);
       border: 1px solid rgba(54,130,174,0.7);
       border-radius: 999px;
-      font-size: 0.82rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       color: #93c5fd;
+      margin-bottom: 1.5rem;
     }
 
     .hero-title {
@@ -360,7 +357,9 @@
       font-weight: 800;
       font-size: clamp(2rem, 4.5vw, 3.2rem);
       line-height: 1.1;
+      letter-spacing: -0.02em;
       color: var(--white);
+      margin-bottom: 1.25rem;
     }
 
     .hero-title em {
@@ -371,9 +370,11 @@
 
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.15rem);
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.85);
       max-width: 560px;
       line-height: 1.75;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 2px 12px rgba(0,0,0,0.5);
     }
 
     .hero-ctas {
@@ -381,6 +382,8 @@
       gap: 1rem;
       flex-wrap: wrap;
     }
+    .hero-ctas .btn-outline { background: rgba(255,255,255,0.08); }
+    .hero-ctas .btn-outline:hover { background: rgba(255,255,255,0.15); }
 
     .hero-scroll {
       position: absolute;
@@ -392,7 +395,7 @@
       align-items: center;
       gap: 0.4rem;
       color: rgba(255, 255, 255, 0.3);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-family: var(--font-mono);
       letter-spacing: 0.08em;
     }
@@ -409,6 +412,15 @@
     @keyframes scrollBounce {
       0%, 100% { transform: rotate(45deg) translateY(0); }
       50% { transform: rotate(45deg) translateY(4px); }
+    }
+
+    @media (max-width: 480px) {
+      #hero {
+        padding: 6rem 0 6.5rem;
+        background-position: 70% center;
+      }
+      .hero-container { padding: 0 1.75rem; }
+      .hero-title { font-size: 1.85rem; }
     }
 
     /* =============================================
@@ -443,7 +455,7 @@
 
     .stat-label {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       color: var(--blue-light);
@@ -1350,8 +1362,8 @@
     <div class="hero-container">
     <div class="hero-inner">
       <div class="hero-badge">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
-        Managed IT &amp; Cybersecurity · Adelaide / Australia
+        <svg width="6" height="6" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+        <span>Managed IT &amp; Cybersecurity · Australia</span>
       </div>
       <h1 class="hero-title">
         Enterprise-grade IT.<br />Without the<br /><em>enterprise overhead.</em>
