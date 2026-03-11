@@ -304,17 +304,20 @@
       padding: 8rem 0 8rem;
       position: relative;
       overflow: hidden;
-      background: url('hero.png') center center / cover no-repeat;
+      background-image: url('hero.png');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
     }
 
     #hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right,
-        rgba(6,13,24,0.6) 0%,
-        rgba(6,13,24,0.4) 45%,
-        rgba(6,13,24,0.1) 100%);
+      background: linear-gradient(to top,
+        rgba(6,13,24,0.85) 0%,
+        rgba(6,13,24,0.4) 40%,
+        rgba(6,13,24,0) 65%);
       z-index: 0;
     }
 
@@ -417,7 +420,8 @@
     @media (max-width: 480px) {
       #hero {
         padding: 6rem 0 6.5rem;
-        background-position: 70% center;
+        background-position: 70% -9vh;
+        background-size: auto 110%;
       }
       .hero-container { padding: 0 1.75rem; }
       .hero-title { font-size: 1.85rem; }
